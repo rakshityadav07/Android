@@ -1,0 +1,2 @@
+rootProject.name='ListView Performance'
+include ':app'
