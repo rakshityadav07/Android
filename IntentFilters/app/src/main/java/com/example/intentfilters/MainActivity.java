@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
         etUrl = findViewById(R.id.etUrl);
         btnNavigate = findViewById(R.id.btnNAvigate);
-
+    
         btnNavigate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

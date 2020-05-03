@@ -23,14 +23,11 @@
 
         <activity android:name=".BrowserActivity">
             <intent-filter>
-
 <!--                I am listining to the action view-->
                 <action android:name="android.intent.action.VIEW" />
-
 <!--                When the Uri is of this type-->
                 <data android:scheme="http" />
                 <data android:scheme="https" />
-
                 <!-- This means it can be set as a default app in my phone for this action -->
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE"/>
