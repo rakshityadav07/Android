@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         }
 
-        /*Runs on Background Thread*/
+        /*Runs on Main Thread*/
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
