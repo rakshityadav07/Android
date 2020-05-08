@@ -1,13 +1,3 @@
-package com.example.restrofitgsonapp
-
-data class Address(
-    val city: String,
-    val geo: Geo,
-    val street: String,
-    val suite: String,
-    val zipcode: String
-)
-
 data class User(
     val address: Address,
     val company: Company,
@@ -17,6 +7,14 @@ data class User(
     val phone: String,
     val username: String,
     val website: String
+)
+
+data class Address(
+    val city: String,
+    val geo: Geo,
+    val street: String,
+    val suite: String,
+    val zipcode: String
 )
 
 data class Company(
