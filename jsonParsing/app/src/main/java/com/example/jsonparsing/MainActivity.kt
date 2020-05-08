@@ -59,8 +59,6 @@ class MainActivity : AppCompatActivity() {
 
                     val response = Response(text,user)
                     responses.add(response)
-                    val i = i + 1;
-                    break;
                 }
                 runOnUiThread {
 
