@@ -1,3 +1,5 @@
+package com.example.restrofitgsonapp
+
 data class User(
     val address: Address,
     val company: Company,
