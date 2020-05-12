@@ -34,8 +34,6 @@ class MainActivity : AppCompatActivity() {
         /*in java we do "interface.class"
         * Kotlin -> "interface :: class.java"*/
         val client = r.create(JsonPlaceholderApi :: class.java)
-
-
         /*Use "enqeue" if u are on UI thread as it create asyncTask automatically and implements two method which are same as postExecute in asyncTask
         * if CallBack is successful then onResponse will run otherwise OnFailure is called*/
         /*Use execute only when u are writting the code in AsynTask or Thread(Kotlin) as it donot make async internally as enqeue does */
