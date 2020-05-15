@@ -5,14 +5,13 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import okhttp3.*
-
 import java.io.IOException
 
 
 class MainActivity : AppCompatActivity() {
 
-    val catFacts = "https://pokeapi.co/api/v2/pokemon/25"
-    val gson = Gson()
+    private val catFacts = "https://pokeapi.co/api/v2/pokemon/25"
+    private val gson = Gson()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +39,7 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+
 
 //        val response = client.newCall(request).execute()
 //        val responseBody = response.body
