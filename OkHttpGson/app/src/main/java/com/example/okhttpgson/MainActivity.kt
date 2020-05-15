@@ -3,13 +3,16 @@ package com.example.okhttpgson
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.Gson
 import okhttp3.*
+
 import java.io.IOException
 
 
 class MainActivity : AppCompatActivity() {
 
-    val catFacts = "https://cat-fact.herokuapp.com/facts"
+    val catFacts = "https://pokeapi.co/api/v2/pokemon/25"
+    val gson = Gson()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,19 +24,21 @@ class MainActivity : AppCompatActivity() {
             .url(catFacts)
             .build()
 
-
-        val call : Call = client.newCall(request)
-
-        call.enqueue(object : Callback{
+        client.newCall(request).enqueue(object : Callback{
             override fun onFailure(call: Call, e: IOException) {
                 e.printStackTrace()
                 call.enqueue(this)
             }
 
-            override fun onResponse(call: Call, response: Response) {
-                val result = response.body?.string()
-                Log.e("TAG",result)
+            override fun onResponse(call: Call, response: okhttp3.Response) {
+                /*ResponseBody extends closable which extends an interface
+                * which means we can only read once that what we saved in result*/
+                val responseBody = response?.body
+                val result = responseBody?.string()
+                val parseObject = gson.fromJson(result,Response::class.java)
+                Log.e("TAG",parseObject.moves.)
             }
+
         })
 
 //        val response = client.newCall(request).execute()
