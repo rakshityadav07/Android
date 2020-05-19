@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         notesList.addAll(db.noteDao().getNotes())
 
-        noteAdapter = NoteAdapter(notesList)
+        noteAdapter = NoteAdapter(notesList,db)
         rvNotes.layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
         rvNotes.adapter = noteAdapter
 
