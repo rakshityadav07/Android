@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textNews"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="NEWS"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:columnCount="2"
+        android:rowCount="2" >
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="194dp"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:ems="10"
+            android:hint="search"
+            android:inputType="textPersonName"
+            android:padding="5dp" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Search"
+            android:textStyle="bold"
+            android:textSize="10dp"
+            android:layout_marginStart="5dp"
+            android:padding="5dp"
+            android:layout_row="0"/>
+
+    </GridLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="90dp" />
+
+
+</FrameLayout>
