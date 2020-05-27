@@ -38,8 +38,6 @@ class MainActivity : AppCompatActivity() {
         retreiveJson(country,API_KEY)
     }
 
-
-
     fun retreiveJson(country : String,apiKey : String){
 
         swipeRefreshLayout.isRefreshing = true;
