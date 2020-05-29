@@ -1,6 +1,7 @@
 package com.example.newsapp
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,6 +31,17 @@ class Adapter(val article : ArrayList<Article>) : RecyclerView.Adapter<Adapter.V
             tvTitle.text = currentArticle.title
             tvSource.text = currentArticle.source.name
             tvDate.text = dateTime(currentArticle.publishedAt)
+
+            cardView.setOnClickListener {
+                val i = Intent(context,NewsDetailed::class.java)
+                i.putExtra("title",currentArticle.title)
+                i.putExtra("source",currentArticle.source.name)
+                i.putExtra("time",dateTime(currentArticle.publishedAt))
+                i.putExtra("desc",currentArticle.description)
+                i.putExtra("imageUrl",currentArticle.urlToImage)
+                i.putExtra("url",currentArticle.url)
+                context.startActivity(i)
+            }
         }
 
         val imageUrl = currentArticle.urlToImage

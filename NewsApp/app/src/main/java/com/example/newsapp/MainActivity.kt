@@ -32,32 +32,53 @@ class MainActivity : AppCompatActivity() {
         val country = getCountry() ?: "In"
 
         swipeRefreshLayout.setOnRefreshListener {
-            retreiveJson(country, API_KEY)
+            retreiveJson("",country, API_KEY)
+        }
+        retreiveJson("",country,API_KEY)
+
+        btnSearch.setOnClickListener {
+
+            if(etQuery.text.toString() != ""){
+                swipeRefreshLayout.setOnRefreshListener {
+                    retreiveJson(etQuery.text.toString(),country, API_KEY)
+                }
+                retreiveJson(etQuery.text.toString(),country,API_KEY)
+            }else{
+                swipeRefreshLayout.setOnRefreshListener {
+                retreiveJson("",country, API_KEY)
+            }
+                retreiveJson("",    country,API_KEY)
+            }
+
         }
 
-        retreiveJson(country,API_KEY)
     }
 
-    fun retreiveJson(country : String,apiKey : String){
+    fun retreiveJson(query : String, country : String,apiKey : String){
 
         swipeRefreshLayout.isRefreshing = true;
-        var call: Call<Headline> = ApiClient.getInstance().api.getHeadlines(country, apiKey)
-            call.enqueue(object : Callback<Headline>{
-                override fun onFailure(call: Call<Headline>, t: Throwable) {
-                    swipeRefreshLayout.isRefreshing = false;
-                    Toast.makeText(baseContext, t.localizedMessage, Toast.LENGTH_SHORT).show()
-                }
+        var call: Call<Headline>
+        if(etQuery.text.toString() != ""){
+            call = ApiClient.getInstance().api.getSpecificData(query, apiKey)
+        }else{
+            call = ApiClient.getInstance().api.getHeadlines(country, apiKey)
+        }
+        call.enqueue(object : Callback<Headline>{
+            override fun onFailure(call: Call<Headline>, t: Throwable) {
+                swipeRefreshLayout.isRefreshing = false;
+                Toast.makeText(baseContext, t.localizedMessage, Toast.LENGTH_SHORT).show()
+            }
 
-                override fun onResponse(call: Call<Headline>, response: Response<Headline>) {
-                    if(response.isSuccessful && response.body()?.articles != null){
-                        swipeRefreshLayout.isRefreshing = false;
-                        article.clear()
-                        article = response.body()?.articles as ArrayList<Article>
-                        val adapter = Adapter(article)
-                        rvView.adapter = adapter
-                    }
+            override fun onResponse(call: Call<Headline>, response: Response<Headline>) {
+                if(response.isSuccessful && response.body()?.articles != null){
+                    swipeRefreshLayout.isRefreshing = false;
+                    article.clear()
+                    article = response.body()?.articles as ArrayList<Article>
+                    val adapter = Adapter(article)
+                    rvView.adapter = adapter
                 }
-            })
+            }
+        })
     }
 
     fun getCountry(): String? {
@@ -68,7 +89,6 @@ class MainActivity : AppCompatActivity() {
 
 
 }
-
 
 
 
