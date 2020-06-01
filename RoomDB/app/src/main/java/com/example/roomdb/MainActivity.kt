@@ -58,7 +58,6 @@ class MainActivity : AppCompatActivity() {
                     val subTitle = dialogView.etSubTitle.text.toString()
                     val note = Note(title,subTitle)
                     db.noteDao().insertNote(note)
-
                     notesList.add(note)
                     noteAdapter.notifyItemInserted(notesList.size - 1)
                 }

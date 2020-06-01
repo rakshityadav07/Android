@@ -1,11 +1,9 @@
 package com.example.newsapp
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import java.lang.Thread.sleep
-import kotlin.concurrent.thread
+import androidx.appcompat.app.AppCompatActivity
 
 class Splash_screen : AppCompatActivity() {
 
