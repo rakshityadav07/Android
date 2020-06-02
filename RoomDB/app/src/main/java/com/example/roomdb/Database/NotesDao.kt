@@ -1,15 +1,16 @@
-package com.example.roomdb
+package com.example.roomdb.Database
 
 import androidx.room.*
+import com.example.roomdb.Models.Note
 
 @Dao
 interface NotesDao {
 
     @Insert
-    fun insertNote(note: Note)
+    fun insertNote(note: Note) : Long
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertMultipleNotes(note: List<Note>)
+    fun insertMultipleNotes(note: List<Note>) : List<Long>
 
     @Update
     fun updateNote(note: Note)

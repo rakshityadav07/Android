@@ -4,15 +4,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="10dp"
+    android:background="@color/Black"
     android:orientation="vertical">
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
+        android:textColorHint="#FFFF"
         android:layout_height="wrap_content"
         android:hint="Enter the title here">
 
         <EditText
             android:id="@+id/etTitle"
+            android:textColorHint="#FFFF"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -21,10 +24,12 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColorHint="#FFFF"
         android:hint="Enter the SubTitle">
 
         <EditText
             android:id="@+id/etSubTitle"
+            android:textColorHint="#FFFF"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

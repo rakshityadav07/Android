@@ -1,21 +1,26 @@
-package com.example.roomdb
+package com.example.roomdb.UI.Adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.roomdb.Models.Note
+import com.example.roomdb.Database.NoteDatabase
+import com.example.roomdb.R
+import com.example.roomdb.UI.Activity.EditActivity
 import kotlinx.android.synthetic.main.item_row.view.*
 
 
-class NoteAdapter(private val notes : ArrayList<Note>,val db : NoteDatabase) : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
+class NoteAdapter(private val notes : ArrayList<Note>, private val db : NoteDatabase) : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
+    lateinit var context: Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
 
-        val layoutInflater = parent.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val itemView = layoutInflater.inflate(R.layout.item_row,parent,false)
-        return NoteViewHolder(itemView)
+        context = parent.context
+        return NoteViewHolder(LayoutInflater.from(context).inflate(R.layout.item_row, parent, false))
     }
 
     override fun getItemCount(): Int {
@@ -28,6 +33,12 @@ class NoteAdapter(private val notes : ArrayList<Note>,val db : NoteDatabase) : R
 
         holder.itemView.setOnLongClickListener {
             deleteNote(db,position)
+        }
+
+        holder.itemView.setOnClickListener {
+            val i = Intent(context,EditActivity::class.java)
+            i.putExtra("ID",currentNote.id)
+            context.startActivity(i)
         }
 
 //        holder.itemView.tvTitle.setText(currentNote.title)

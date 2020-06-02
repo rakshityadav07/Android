@@ -1,15 +1,14 @@
-package com.example.roomdb
+package com.example.roomdb.UI.Activity
 
-import android.content.Context
 import android.os.Bundle
-import android.text.Layout
-import android.view.LayoutInflater
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
+import com.example.roomdb.Models.Note
+import com.example.roomdb.UI.Adapter.NoteAdapter
+import com.example.roomdb.Database.NoteDatabase
+import com.example.roomdb.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.view_dialog.view.*
 
@@ -17,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
     val db by lazy {
         Room.databaseBuilder(this,
-            NoteDatabase :: class.java,
+            NoteDatabase:: class.java,
             "notesdb.db")
             .allowMainThreadQueries()
             .build()
@@ -33,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         notesList.addAll(db.noteDao().getNotes())
 
-        noteAdapter = NoteAdapter(notesList,db)
+        noteAdapter = NoteAdapter(notesList, db)
         rvNotes.layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
         rvNotes.adapter = noteAdapter
 
@@ -56,8 +55,9 @@ class MainActivity : AppCompatActivity() {
 
                     val title = dialogView.etTitle.text.toString()
                     val subTitle = dialogView.etSubTitle.text.toString()
-                    val note = Note(title,subTitle)
-                    db.noteDao().insertNote(note)
+                    val note = Note(title, subTitle)
+                    val id = db.noteDao().insertNote(note)
+                    note.id = id.toInt()
                     notesList.add(note)
                     noteAdapter.notifyItemInserted(notesList.size - 1)
                 }
@@ -71,4 +71,12 @@ class MainActivity : AppCompatActivity() {
         customAlertDialog.show()
 
     }
+
+    override fun onResume() {
+        super.onResume()
+        notesList.clear()
+        notesList.addAll(db.noteDao().getNotes())
+        noteAdapter.notifyDataSetChanged()
+    }
+
 }
