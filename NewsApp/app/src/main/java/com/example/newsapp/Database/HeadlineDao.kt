@@ -1,6 +1,7 @@
-package com.example.newsapp
+package com.example.newsapp.Database
 
 import androidx.room.*
+import com.example.newsapp.Models.Headline
 
 @Dao
 interface HeadlineDao {

@@ -11,9 +11,9 @@
         android:roundIcon="@drawable/circle_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NewsDetailed" ></activity>
+        <activity android:name=".ui.Activity.NewsDetailed" ></activity>
         <activity
-            android:name=".Splash_screen"
+            android:name=".ui.Activity.Splash_screen"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".ui.Activity.MainActivity"></activity>
     </application>
 
 </manifest>

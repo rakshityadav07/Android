@@ -1,4 +1,4 @@
-package com.example.newsapp
+package com.example.newsapp.ui.Adapter
 
 import android.content.Context
 import android.content.Intent
@@ -6,6 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.newsapp.Models.Article
+import com.example.newsapp.ui.Activity.NewsDetailed
+import com.example.newsapp.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_row.view.*
 import org.ocpsoft.prettytime.PrettyTime
@@ -33,7 +36,7 @@ class Adapter(val article : ArrayList<Article>) : RecyclerView.Adapter<Adapter.V
             tvDate.text = dateTime(currentArticle.publishedAt)
 
             cardView.setOnClickListener {
-                val i = Intent(context,NewsDetailed::class.java)
+                val i = Intent(context, NewsDetailed::class.java)
                 i.putExtra("title",currentArticle.title)
                 i.putExtra("source",currentArticle.source.name)
                 i.putExtra("time",dateTime(currentArticle.publishedAt))

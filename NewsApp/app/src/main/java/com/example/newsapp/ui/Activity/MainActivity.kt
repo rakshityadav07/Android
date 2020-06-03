@@ -1,19 +1,23 @@
-package com.example.newsapp
+package com.example.newsapp.ui.Activity
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
-import androidx.room.RoomDatabase
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.example.newsapp.*
+import com.example.newsapp.Database.HeadlineDatabase
+import com.example.newsapp.Database.ApiClient
+import com.example.newsapp.Models.Article
+import com.example.newsapp.Models.Headline
+import com.example.newsapp.ui.Adapter.Adapter
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.concurrent.thread
 
 
 class MainActivity : AppCompatActivity() {
@@ -24,7 +28,8 @@ class MainActivity : AppCompatActivity() {
 
     /**/
     val db by lazy{
-        Room.databaseBuilder(this,HeadlineDatabase::class.java,"NewsDb.db")
+        Room.databaseBuilder(this,
+            HeadlineDatabase::class.java,"NewsDb.db")
             .build()
     }
 

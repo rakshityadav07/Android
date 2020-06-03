@@ -1,9 +1,10 @@
-package com.example.newsapp
+package com.example.newsapp.ui.Activity
 
 import android.os.Bundle
 import android.view.View
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
+import com.example.newsapp.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detailed.*
 

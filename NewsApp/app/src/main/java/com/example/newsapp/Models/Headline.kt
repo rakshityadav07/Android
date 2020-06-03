@@ -1,4 +1,4 @@
-package com.example.newsapp
+package com.example.newsapp.Models
 
 import androidx.room.Embedded
 import androidx.room.Entity
