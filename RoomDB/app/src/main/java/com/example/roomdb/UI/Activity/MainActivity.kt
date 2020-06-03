@@ -56,10 +56,15 @@ class MainActivity : AppCompatActivity() {
                     val title = dialogView.etTitle.text.toString()
                     val subTitle = dialogView.etSubTitle.text.toString()
                     val note = Note(title, subTitle)
+
+                    /*Get the ID of the inserted note*/
                     val id = db.noteDao().insertNote(note)
+                    /*Update the note object so that it has an ID*/
                     note.id = id.toInt()
-                    notesList.add(note)
-                    noteAdapter.notifyItemInserted(notesList.size - 1)
+
+                    notesList.add(0,note)
+                    rvNotes.smoothScrollToPosition(0)
+                    noteAdapter.notifyItemInserted(0)
                 }
                 .setNegativeButton("Close"
                 ) { dialog, _ ->

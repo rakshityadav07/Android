@@ -22,7 +22,7 @@
 
             <EditText
                 android:id="@+id/etTitleEdit"
-                android:textColorHint="#FFFF"
+                android:textColor="#FFFF"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -37,7 +37,7 @@
             <EditText
                 android:id="@+id/etSubTitleEdit"
                 android:layout_width="match_parent"
-                android:textColorHint="#FFFF"
+                android:textColor="#FFFF"
                 android:layout_height="wrap_content"/>
 
         </com.google.android.material.textfield.TextInputLayout>
